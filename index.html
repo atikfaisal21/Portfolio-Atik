@@ -152,10 +152,24 @@
       border-radius: 10px;
       padding: 10px 6px; text-align:center;
       transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
     }
     .stat-box:hover {
       border-color: var(--accent-cyan);
       box-shadow: var(--glow-cyan);
+    }
+    /* Clickable stat boxes */
+    a.stat-box.stat-link {
+      cursor: pointer;
+      position: relative;
+    }
+    a.stat-box.stat-link:hover {
+      background: rgba(0,212,255,0.08);
+      transform: translateY(-2px);
+    }
+    a.stat-box.stat-link:hover .stat-num {
+      color: var(--accent-gold);
     }
     .stat-num {
       font-family: 'JetBrains Mono', monospace;
@@ -1181,6 +1195,7 @@
         transition: left 0.3s ease;
       }
       .sidebar.open { left: 0; }
+      .sidebar-nav-wrap { max-height: 45vh; }
       .main { margin-left: 0; }
       footer { margin-left: 0; }
       #mobile-toggle { display:flex; align-items:center; justify-content:center; }
@@ -1235,9 +1250,18 @@
 
     <!-- Stats -->
     <div class="stats-strip">
-      <div class="stat-box"><div class="stat-num counter" data-target="6">0</div><div class="stat-label">Papers</div></div>
-      <div class="stat-box"><div class="stat-num counter" data-target="1">0</div><div class="stat-label">Patent</div></div>
-      <div class="stat-box"><div class="stat-num" style="font-size:1rem;">3.69</div><div class="stat-label">CGPA</div></div>
+      <a class="stat-box stat-link" href="#publications" title="View all publications">
+        <div class="stat-num counter" data-target="6">0</div>
+        <div class="stat-label">Papers <i class="fas fa-arrow-right" style="font-size:0.55rem; opacity:0.5;"></i></div>
+      </a>
+      <a class="stat-box stat-link" href="#publications" title="View patent" onclick="setTimeout(()=>switchTab('patents',document.querySelectorAll('.pub-tab')[1]),200)">
+        <div class="stat-num counter" data-target="1">0</div>
+        <div class="stat-label">Patent <i class="fas fa-arrow-right" style="font-size:0.55rem; opacity:0.5;"></i></div>
+      </a>
+      <div class="stat-box">
+        <div class="stat-num" style="font-size:1rem;">3.69</div>
+        <div class="stat-label">CGPA</div>
+      </div>
     </div>
 
     <!-- Social Links -->
